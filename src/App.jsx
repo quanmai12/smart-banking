@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from './routers';
 
 function App() {
 
 
   return (
-    <Router>
-        <Routes>
-          {/* <Route path="/" element={} /> */}
-        </Routes>
-    </Router>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 
