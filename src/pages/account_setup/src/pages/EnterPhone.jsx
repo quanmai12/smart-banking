@@ -12,12 +12,12 @@ function EnterPhone() {
 
   const handleContinue = () => {
     if (phoneNumber) {
-      // Điều hướng tới trang tiếp theo (Ví dụ: trang xác minh)
       navigate("/verify-code", {
-        state: { phoneNumber, selectedCountry }, // Truyền số điện thoại và quốc gia đã chọn
+        state: { phoneNumber, selectedCountry },
       });
     }
   };
+  
 
   return (
     <div className="bg-white w-full min-h-screen flex flex-col justify-between p-6 relative rounded-lg">
@@ -34,7 +34,10 @@ function EnterPhone() {
       </div>
 
       {/* Tiêu đề */}
-      <div className="mt-8 w-full text-center">
+      <div
+        className="mt-8 w-[375px] h-[106px] px-[16px] pt-[4px] pb-[4px] text-center"
+        style={{ margin: "0 auto" }} // Căn giữa
+      >
         <h1 className="text-2xl font-bold text-gray-900">
           What phone number would you like to use?
         </h1>
@@ -43,46 +46,44 @@ function EnterPhone() {
         </p>
       </div>
 
+
       {/* Phần nhập mã vùng và số điện thoại */}
-      <div className="mt-8 flex justify-between space-x-4">
+      <div className="mt-8 flex justify-center items-center space-x-4">
         {/* Phần Country */}
-        <div className="w-[40%]">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Country
-          </label>
-          <div className="flex items-center space-x-3 p-3 border border-gray-300 rounded-lg">
-            {selectedCountry ? (
-              <>
-                {/* Hiển thị mã vùng và lá cờ */}
-                <img
-                  src={`https://flagcdn.com/w320/${selectedCountry.flag}.png`}
-                  alt={selectedCountry.name}
-                  className="w-[24px] h-[24px] object-cover"
-                />
-                <span className="text-gray-900">+{selectedCountry.phoneCode}</span>
-              </>
-            ) : (
-              <span className="text-gray-500">No country selected</span>
-            )}
-          </div>
+        <div
+          className="flex items-center justify-center border border-gray-300 rounded-[12px] p-[8px] pl-[10px]"
+          style={{ width: "98px", height: "56px", gap: "10px" }}
+        >
+          {selectedCountry ? (
+            <>
+              {/* Hiển thị mã vùng và lá cờ */}
+              <img
+                src={`https://flagcdn.com/w320/${selectedCountry.flag}.png`}
+                alt={selectedCountry.name}
+                className="w-[24px] h-[24px] object-cover"
+              />
+              <span className="text-gray-900 ml-2">+{selectedCountry.phoneCode}</span>
+            </>
+          ) : (
+            <span className="text-gray-500">No country</span>
+          )}
         </div>
 
         {/* Phần Mobile Number */}
-        <div className="w-[55%]">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Mobile Number
-          </label>
-          <div className="p-3 border border-gray-300 rounded-lg">
-            <input
-              type="tel"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="Enter your phone number"
-              className="w-full p-2 border border-gray-300 rounded-lg"
-            />
-          </div>
+        <div
+          className="border border-gray-300 rounded-lg flex items-center px-3"
+          style={{ width: "239px", height: "56px" }}
+        >
+          <input
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            placeholder="Enter your phone number"
+            className="w-full outline-none"
+          />
         </div>
       </div>
+
 
       {/* Nút tiếp tục */}
       <div className="mt-8 flex-grow" /> 
