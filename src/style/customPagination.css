@@ -1,0 +1,23 @@
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    margin: 0 5px !important;
+    transition: all 0.3s;
+    background-color: #B8C5CA;
+    border-radius: 50%;
+  }
+  
+  /* Custom bullet active */
+  .swiper-pagination-bullet-active {
+    width: 30px;
+    height: 8px;
+    border-radius: 10px;
+    background-color: #2791B5 !important; 
+    opacity: 1;
+  }
+
+  .swiper-pagination {
+    position: static; 
+    margin-bottom: 50px;
+  }
+
