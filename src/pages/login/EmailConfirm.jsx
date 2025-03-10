@@ -40,7 +40,7 @@ export default function ConfirmEmailPage() {
                     office@designmesocial.com
                 </p>
 
-                <Button text="Open email app" className="text-[#134555] bg-secondary"/>
+                <Button onClick={() => navigate("/homescreen")} text="Open email app" className="text-[#134555] bg-secondary"/>
 
                 <Button text="I didn't receive my email" className="bg-[#265565] text-white " />
                     

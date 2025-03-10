@@ -19,7 +19,7 @@ const Signup = () => {
     return (
         <Wrapper>
             <div className="mt-4">
-            <ProgressAndBackBar />
+            <ProgressAndBackBar onClick={() => navigate("/login")}/>
             <div >
                 <h2 className="mb-2 text-left text-[30px] sm:text-5xl font-semibold leading-tight max-w-xs sm:max-w-sm ">What's your email?</h2>
                 <p className="text-sm text-gray-500 whitespace-nowrap">Enter the email address you’d like to use to sign in to <br /> SmartBank.</p>
