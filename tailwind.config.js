@@ -4,10 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#2B7613",
+        primary: "#2b6173",
         secondary: "#E8F569",
         neutral: "#E7EAEB"
       },
+      boxShadow: {
+        custom: "0px 2px 4px rgba(0, 0, 0, 0.05)", // Tuỳ chỉnh shadow
+      }
     },
   },
   plugins: [],
