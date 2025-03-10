@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import {Signin , Signup , EmailConfirm} from "../pages/login";
 
 
@@ -11,6 +12,7 @@ const AppRoutes = () => {
           <Route path="dashboard" />
           <Route path="login" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="/homescreen" element={<HomeScreen />}
           <Route path="email-confirm" element={<EmailConfirm />} />
         </Route>
       </Routes>
