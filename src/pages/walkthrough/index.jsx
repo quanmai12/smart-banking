@@ -11,7 +11,7 @@ const Walkthrough = () => {
         <div className="w-screen mx-[-16px]">
           <SwiperImage />
         </div>
-        <div className="mt-auto">
+        <div className="w-full max-w-md text-center pb-5 absolute bottom-5 left-1/2 -translate-x-1/2 px-4">
           <Button text="Sign Up" className="bg-primary" /> 
           <Button text="Log In" className="bg-neutral text-primary"/>
         </div>
