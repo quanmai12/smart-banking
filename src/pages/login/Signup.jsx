@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect  } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/button";
@@ -9,6 +9,10 @@ const Signup = () => {
 
     const [email, setEmail] = useState("");
     const [isValid, setIsValid] = useState(false);
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+    const [isAndroid, setIsAndroid] = useState(false);
+    const [isIOS, setIsIOS] = useState(false);
+
     const navigate = useNavigate();
 
     const validateEmail = (value) => {
@@ -16,6 +20,31 @@ const Signup = () => {
         setIsValid(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
     };
     
+    useEffect(() => {
+        const handleFocus = () => setKeyboardVisible(true);
+        const handleBlur = () => setKeyboardVisible(false);
+
+        const input = document.getElementById("email-input");
+        if (input) {
+            input.addEventListener("focus", handleFocus);
+            input.addEventListener("blur", handleBlur);
+        }
+
+        return () => {
+            if (input) {
+                input.removeEventListener("focus", handleFocus);
+                input.removeEventListener("blur", handleBlur);
+            }
+        };
+    }, []);
+
+    useEffect(() => {
+        const userAgent = navigator.userAgent.toLowerCase();
+        setIsAndroid(userAgent.includes("android"));
+        setIsIOS(/iPhone|iPad|iPod/.test(navigator.userAgent));
+    }, []);
+    
+
     return (
         <Wrapper>
             <div className="mt-4">
@@ -27,6 +56,7 @@ const Signup = () => {
             <div className="flex flex-col items-center rounded-lg mt-10">
                 {/* Input Email */}
                 <input
+                    id="email-input"
                     type="email"
                     placeholder="Email address"
                     className="w-full px-4 py-4 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -43,21 +73,25 @@ const Signup = () => {
                 </p>
             </div>
             
-            <div className="absolute bottom-0 w-full">
-                <p className="text-xs text-black text-center pb-6 font-medium">
-                    By registering, you accept our{" "}
-                    <a href="#" className="text-[#2791B5] font-semibold hover:underline">
-                        Terms & Conditions {" "}
-                    </a> 
-                    and{" "}
-                    <a href="#" className="text-[#2791B5] font-semibold hover:underline">
-                        Privacy Policy
-                    </a>. 
-                    Your data will be securely encrypted with TLS.{" "}
-                    <span role="img" aria-label="lock">🔒</span>
-                </p>
-                <Button text="Continue" className={`
-                    ${isValid ? "bg-primary text-white" : "bg-[#E7EAEB] text-[#B8C5CA]"}`}
+            {/* Button + Privacy */}
+            <div className={`absolute w-full transition-all duration-300 ${isKeyboardVisible ? (isIOS ? "bottom-[200px]" : "bottom-[320px]") : "bottom-0"}`} >
+                    {!(isKeyboardVisible && isAndroid) && (
+                        <p className="text-xs text-black text-center pb-6 font-medium">
+                            By registering, you accept our{" "}
+                            <a href="#" className="text-[#2791B5] font-semibold hover:underline">
+                                Terms & Conditions{" "}
+                            </a>
+                            and{" "}
+                            <a href="#" className="text-[#2791B5] font-semibold hover:underline">
+                                Privacy Policy
+                            </a>.
+                            Your data will be securely encrypted with TLS.{" "}
+                            <span role="img" aria-label="lock">🔒</span>
+                        </p>
+                    )}
+                <Button 
+                    text="Continue" 
+                    className={`${isValid ? "bg-primary text-white" : "bg-[#E7EAEB] text-[#B8C5CA]"}`}
                     isValid={isValid}
                     onClick={() => navigate("/email-confirm")}
                 />   

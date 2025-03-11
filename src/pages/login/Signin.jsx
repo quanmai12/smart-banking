@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/button";
@@ -10,11 +10,27 @@ const Signin = () => {
     const [email, setEmail] = useState("");
     const [isValid, setIsValid] = useState(false);
     const navigate = useNavigate();
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+    const [keyboardOffset, setKeyboardOffset] = useState(0);
 
     const validateEmail = (value) => {
         setEmail(value);
         setIsValid(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
     };
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.visualViewport) {
+                const keyboardHeight = window.innerHeight - window.visualViewport.height;
+                const isKeyboardOpen = keyboardHeight > 100;
+                setKeyboardVisible(isKeyboardOpen);
+                setKeyboardOffset(isKeyboardOpen ? keyboardHeight : 0);
+            }
+        };
+
+        window.visualViewport?.addEventListener("resize", handleResize);
+        return () => window.visualViewport?.removeEventListener("resize", handleResize);
+    }, []);
     
     return (
         <Wrapper>
@@ -43,7 +59,12 @@ const Signin = () => {
                     </p>
                 </div>
 
-                <div>
+                <div 
+                    className="absolute left-0 w-full transition-all duration-300"
+                    style={{
+                        bottom: isKeyboardVisible ? `${keyboardOffset}px` : "32px"
+                    }} 
+                >
                     <Button text="Continue" className={`absolute bottom-0 w-full
                     ${isValid ? "bg-primary text-white" : "bg-[#E7EAEB] text-[#B8C5CA]"}`}
                         isValid={isValid}
