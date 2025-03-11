@@ -19,14 +19,14 @@ function PasscodeSetup() {
         </button>
 
         {/* Hình ảnh minh họa */}
-        <div className="absolute top-[180px] left-[50%] transform -translate-x-1/2 w-[375px] h-[250px]">
-          <img src="/public/passcode-setup.png" alt="Passcode Setup" className="w-full h-full object-cover rounded-lg" onError={(e) => e.target.style.display = "none"} />
+        <div className="absolute top-[100px] left-[50%] transform -translate-x-1/2 w-[375px] h-[400px]">
+          <img src="/image/passcode-setup.png" alt="Passcode Setup" className="w-full h-full object-cover rounded-lg" onError={(e) => e.target.style.display = "none"} />
         </div>
 
         {/* Nút "Continue" */}
         <button
           className="absolute top-[680px] left-[16px] w-[343px] h-[48px] flex items-center justify-center rounded-full bg-[#F8FF7D] font-semibold text-gray-900 shadow-md transition hover:bg-yellow-300"
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/legal-ifnomation")}
         >
           Continue
         </button>

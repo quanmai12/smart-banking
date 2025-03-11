@@ -92,7 +92,7 @@ function VerifyCode() {
       <div className="mt-8 flex-grow" />
       <button
         className={`mx-auto w-[90%] sm:w-[343px] h-[48px] rounded-lg text-white font-bold transition ${
-          otp.every((num) => num !== "") ? "bg-blue-700" : "bg-gray-400 cursor-not-allowed"
+          otp.every((num) => num !== "") ? "bg-primary" : "bg-gray-400 cursor-not-allowed"
         }`}
         disabled={!otp.every((num) => num !== "")}
         onClick={handleVerify}

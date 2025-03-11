@@ -115,7 +115,7 @@ function SelectCountry() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for a country"
-            className="w-[90%] sm:w-[343px] p-2 mb-4 border border-gray-300 rounded-lg"
+            className="mt-4 w-[90%] sm:w-[343px] p-2 mb-4 border border-gray-300 rounded-lg"
           />
           {filteredCountries.length > 0 ? (
             filteredCountries.map((country, index) => (
@@ -141,7 +141,7 @@ function SelectCountry() {
       <div className="mt-8 flex-grow" />
       <button
         className={`mx-auto w-[90%] sm:w-[343px] h-[48px] rounded-lg text-white font-bold transition ${
-          selectedCountry ? "bg-blue-700" : "bg-gray-400 cursor-not-allowed"
+          selectedCountry ? "bg-primary" : "bg-gray-400 cursor-not-allowed"
         }`}
         disabled={!selectedCountry}
         onClick={handleContinue}

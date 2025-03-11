@@ -39,7 +39,7 @@ function AccountType() {
               onClick={() => navigate("/select-country")}
             >
               <div className="flex items-center gap-3">
-                <img src="/personal-icon.png" alt="Personal" className="w-12 h-12" />
+                <img src="/image/personal-icon.png" alt="Personal" className="w-12 h-12" />
                 <div>
                   <h2 className="font-semibold text-gray-900">Personal account</h2>
                   <p className="text-gray-500 text-sm">
@@ -56,7 +56,7 @@ function AccountType() {
               onClick={() => navigate("/select-country")}
             >
               <div className="flex items-center gap-3">
-                <img src="/business-icon.png" alt="Business" className="w-12 h-12" />
+                <img src="/image/business-icon.png" alt="Business" className="w-12 h-12" />
                 <div>
                   <h2 className="font-semibold text-gray-900">Business account</h2>
                   <p className="text-gray-500 text-sm">

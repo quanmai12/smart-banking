@@ -1,4 +1,3 @@
-// EnterPhone.jsx
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -89,7 +88,7 @@ function EnterPhone() {
       <div className="mt-8 flex-grow" /> 
       <button
         className={`mx-auto w-[90%] sm:w-[343px] h-[48px] rounded-lg text-white font-bold transition ${
-          phoneNumber ? "bg-blue-700" : "bg-gray-400 cursor-not-allowed"
+          phoneNumber ? "bg-primary" : "bg-gray-400 cursor-not-allowed"
         }`}
         disabled={!phoneNumber}
         onClick={handleContinue}
