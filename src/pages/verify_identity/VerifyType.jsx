@@ -36,7 +36,7 @@ export default function VerifyType() {
 
     return (
         <Wrapper className="bg-gray-100">
-            <div className="mx-auto max-w-md pt-[52px] flex-col ">
+            <div className="mx-auto max-w-md pt-[10px] flex-col ">
                 <div className="text-[#15131f] text-[32px] font-semibold  leading-9">Verify your identity</div>
                 <div className=" opacity-60  text-[#132f38] text-[15px] font-medium  leading-[18px] pt-4">We need to check that you are who you say you are. <br /> Here’s how you can do it.</div>
             </div>
@@ -80,7 +80,7 @@ export default function VerifyType() {
             </div>
             <div className="flex mx-auto max-w-md item-center justify-center">
                 {/* Skip */}
-                <button className="mt-6 text-[17px] text-primary font-bold hover:underline">
+                <button className="mt-4 pb-4 text-[17px] text-primary font-bold hover:underline">
                         Skip for now
                 </button>
             </div>

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/button";
 
 export default function CameraCapture() {
+    const navigate = useNavigate();
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -9,14 +11,14 @@ export default function CameraCapture() {
     const [isBackSide, setIsBackSide] = useState(false);
     const [frontImage, setFrontImage] = useState(null);
     const [backImage, setBackImage] = useState(null);
-
-    const startCamera = async () => {
+    
+    const startCamera = async  () => {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            setHasPermission(true);
             if (videoRef.current) {
                 videoRef.current.srcObject = stream;
             }
-            setHasPermission(true);
         } catch (error) {
             console.error("Camera access denied:", error);
             setHasPermission(false);
@@ -36,9 +38,9 @@ export default function CameraCapture() {
             const imageData = canvas.toDataURL("image/png");
             setCapturedImage(imageData);
             if (!isBackSide) {
-                setFrontImage(capturedImage); 
+                setFrontImage(imageData); 
             } else {
-                setBackImage(capturedImage);
+                setBackImage(imageData);
             }
         }
     };
@@ -51,7 +53,7 @@ export default function CameraCapture() {
         } else {
             stopCamera();
             console.log("Both images captured, proceed to next step");
-            navigate("/next-step");
+            navigate("/take-selfie");
         }
     };
 
@@ -78,7 +80,7 @@ export default function CameraCapture() {
         <div className="relative flex flex-col items-center h-screen bg-[#00252B] text-white px-4">
             <div className="w-full pt-6 text-center">
                 <div className="flex items-center justify-between mb-6">
-                    <img src="/image/left-arrow.svg" alt="" className="h-[22px] w-[18px]" />
+                    <img src="/image/left-arrow.svg" alt="" className="h-[22px] w-[18px]" onClick={() => navigate("/camera-access")}/>
                     <h2 className="text-lg font-semibold text-white mx-auto">Verify your identity</h2>
                 </div>
                 <p className="text-[16px] text-gray-300 mt-1">
@@ -86,18 +88,18 @@ export default function CameraCapture() {
                 </p>
             </div>
 
-            <div className="relative w-full flex flex-col items-center">
+            <div className="absolute sm:top-[170px] top-[20px]  relative w-full flex flex-col items-center">
                 {/* back of the card */}
                 {isBackSide && (
                     <img
                         src="/image/rotate-icon.svg"
                         alt="Rotate Icon"
-                        className="absolute top-[110px] w-18 h-18 "
+                        className="pb-2 w-18 h-18 "
                     />
                 )}
 
                 {/* Camera Frame */}
-                <div className="absolute top-[170px] px-4 w-[calc(100vw-2rem)] max-w-[400px] h-[240px] md:h-[260px] border-2 border-white rounded-[20px] overflow-hidden">
+                <div className=" w-[calc(100vw-2rem)] max-w-[400px] h-[240px] md:h-[260px] border-2 border-white rounded-[20px] overflow-hidden">
                     {capturedImage ? (
                         <img src={capturedImage} alt="Captured" className="w-full h-full object-cover" />
                     ) : (
@@ -106,7 +108,7 @@ export default function CameraCapture() {
                 </div>
 
                 {/* desribe */}
-                <p className="absolute top-[430px] text-white text-lg font-semibold">
+                <p className="pt-4 text-white text-lg font-semibold">
                     {isBackSide ? "Back of the card" : "Front of the card"}
                 </p>
             </div>
@@ -114,7 +116,7 @@ export default function CameraCapture() {
 
             {/* Capture Button */}
                 {capturedImage ? (
-                    <div className="w-full max-w-md text-center pb-5 absolute bottom-5 left-1/2 -translate-x-1/2 px-4">
+                    <div className="w-full max-w-md text-center pb-2 absolute bottom-0 left-1/2 -translate-x-1/2 px-4">
                         <Button
                             text="Use this picture"
                             className="text-[#134555] bg-secondary w-full"

@@ -10,20 +10,13 @@ export default function VerifySplash() {
 
     return (
         <div className="relative flex flex-col items-center justify-center h-screen bg-gradient-to-b from-[#265565] via-[#288FB1] to-[#265565]">
-            {/* Back */}
-            <button
-                className="absolute top-[30px] left-[-15px]  p-[15px] gap-[10px] text-white z-50"
-                onClick={() => navigate("/login")}
-            >
-                <img src="/image/Backarrow-white.svg" alt="" className="h-14 w-16"/>
-            </button>
 
             {/* Background Image */}
             <div className="absolute inset-0 w-full h-full">
                 <img
                     src="/image/verify-identity.png"
                     alt="verify img"
-                    className="w-full max-w-[220px] min-w-[190px] h-auto object-contain mx-auto fixed top-[200px] left-1/2 -translate-x-1/3 z-10"
+                    className="w-full max-w-[220px] min-w-[190px] h-auto object-contain mx-auto absolute top-[11vh] left-1/2 -translate-x-1/3 z-10"
                 />
                 <img
                     src="/image/verify-shadow.png"
@@ -43,7 +36,7 @@ export default function VerifySplash() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 w-full max-w-sm px-4 pt-7 text-center mt-[33rem]">
+            <div className="relative z-10 w-full max-w-sm px-4 pt-7 text-center mt-[50vh] pb-4">
                 <h1 className="text-3xl font-semibold text-white">
                     {name}, we’ll need to verify your identity 
                 </h1>

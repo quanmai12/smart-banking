@@ -12,7 +12,7 @@ export default function CameraAccess() {
             {/* Back button */}
             <button
                 className="absolute top-6 left-4  text-white z-50"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/verify-type")}
             >
                 <img src="/image/x.svg" alt="" className="h-10 w-10" />
             </button>
@@ -44,11 +44,11 @@ export default function CameraAccess() {
                 />
             </div>
 
-            {/* Buttons - Luôn cố định cách đáy 20px */}
-            <div className="w-full max-w-sm text-center pb-5 ">
+            {/* Buttons */}
+            <div className="w-full max-w-sm text-center pb-5 z-10 ">
                 <Button 
                     text="Allow camera access" 
-                    className="text-[#134555] bg-secondary w-full"
+                    className="text-[#134555] bg-secondary w-full z-50"
                     onClick={() => navigate("/take-photo")}    
                 />
                 <Button text="Not right now" className="bg-[#265565] text-white w-full" />

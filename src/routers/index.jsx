@@ -6,8 +6,6 @@ const AppRoutes = () => {
       <Routes>
         {/* Trang chủ */}
         <Route path="/" >
-          <Route index  />
-          <Route path="dashboard" />
           <Route path="verify-splash" element={<VerifySplash />}/>
           <Route path="verify-type" element={<VerifyType />}/>
           <Route path="camera-access" element={<CameraAccess />}/>
