@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const WelcomeScreen = () => {
+const GetStarter = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
@@ -83,4 +83,4 @@ const WelcomeScreen = () => {
   );
 };
 
-export default WelcomeScreen;
+export default GetStarter;

@@ -1,19 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import WelcomeScreen from "./components/WelcomeScreen";
-import LegalInfoScreen from "./components/LegalInfoScreen";
-import HomeAddressScreen from "./components/HomeAddressScreen";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from './routers';
 
-const App = () => {
+function App() {
+
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<WelcomeScreen />} />
-        <Route path="/legal-info" element={<LegalInfoScreen />} />
-        <Route path="/home-address" element={<HomeAddressScreen />} />
-      </Routes>
-    </Router>
-  );
-};
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  )
+}
 
-export default App;
+export default App
