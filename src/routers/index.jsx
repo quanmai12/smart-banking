@@ -5,6 +5,7 @@ import SplashScreen from "../pages/walkthrough/SplashScreen";
 import {Signin , Signup , EmailConfirm} from "../pages/login";
 import HomeScreen from "../pages/home_screen/";
 import LoadingPlaceholder from "../pages/home_screen/LoadingPlaceholder";
+import { HomeAddressScreen, GetStarter, LegalInfoScreen } from "../pages/legal_information";
 
 
 const AppRoutes = () => {
@@ -29,6 +30,9 @@ const AppRoutes = () => {
             <Route path="phone-verified" element={<PhoneVerified />} />
             <Route path="create-passcode" element={<CreatePasscode />} />
             <Route path="passcode-setup" element={<PasscodeSetup />} />
+              <Route path="/get-starter" element={<GetStarter />} />
+                <Route path="/legal-info" element={<LegalInfoScreen />} />
+                <Route path="/home-address" element={<HomeAddressScreen />} />
         </Route>
       </Routes>
   );
