@@ -9,5 +9,5 @@ const Button = ({ text, onClick, className, isValid = true }) => {
         </button>
     );
   };
-  
+
   export default Button;
