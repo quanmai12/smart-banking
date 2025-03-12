@@ -1,4 +1,3 @@
-
 const Button = ({ text, onClick, className, isValid = true }) => {
     return (
         <button
@@ -10,6 +9,5 @@ const Button = ({ text, onClick, className, isValid = true }) => {
         </button>
     );
   };
-  
+
   export default Button;
-  
